@@ -18,12 +18,16 @@ settings = get_settings()
 
 app = FastAPI(title="Mini RAG API", version="0.1.0")
 
+origins = ["*"] if settings.ALLOWED_ORIGINS == "*" else [o.strip() for o in settings.ALLOWED_ORIGINS.split(",") if o.strip()]
+allow_credentials = False if origins == ["*"] else True
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"] if settings.ALLOWED_ORIGINS == "*" else settings.ALLOWED_ORIGINS.split(","),
-    allow_credentials=True,
+    allow_origins=origins,
+    allow_credentials=allow_credentials,
     allow_methods=["*"],
     allow_headers=["*"],
+    max_age=86400,
 )
 
 
@@ -38,8 +42,11 @@ def process_text(req: ProcessTextRequest):
         raise HTTPException(status_code=400, detail="Text must not be empty")
 
     chunks = chunk_text(req.text, req.chunk_size, req.chunk_overlap)
-    count = upsert_chunks_to_vector_db(chunks)
-    return ProcessTextResponse(chunks_indexed=count, message="Indexed (embedding/upsert pending in Step 2)")
+    try:
+        count = upsert_chunks_to_vector_db(chunks)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Indexing failed: {e}")
+    return ProcessTextResponse(chunks_indexed=count, message="Indexed")
 
 
 @app.post("/query", response_model=QueryResponse)
@@ -47,7 +54,10 @@ def query(req: QueryRequest):
     if not req.query or not req.query.strip():
         raise HTTPException(status_code=400, detail="Query must not be empty")
 
-    results = retrieve_and_rerank(req.query, req.top_k)
+    try:
+        results = retrieve_and_rerank(req.query, req.top_k)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Query failed: {e}")
     # While Step 2 isn't implemented, return a placeholder
     context_chunks = [r.get("text", "") if isinstance(r, dict) else str(r) for r in results]
     answer = generate_answer(req.query, context_chunks)
@@ -60,4 +70,3 @@ def query(req: QueryRequest):
             citations.append(Citation(chunk_id=str(i), text=str(r)))
 
     return QueryResponse(answer=answer, citations=citations)
-

@@ -49,7 +49,10 @@ def _ensure_pinecone_index_host(dimension: int | None = None) -> str:
     from pinecone import Pinecone, ServerlessSpec, CloudProvider, AwsRegion, GcpRegion, AzureRegion, VectorType, Metric
 
     if settings.PINECONE_INDEX_HOST:
-        return settings.PINECONE_INDEX_HOST
+        host = settings.PINECONE_INDEX_HOST.strip()
+        # avoid accidental scheme or trailing slash/newlines
+        host = host.replace("https://", "").replace("http://", "").strip().strip("/")
+        return host
 
     if not settings.PINECONE_INDEX:
         raise RuntimeError("PINECONE_INDEX or PINECONE_INDEX_HOST must be set")
@@ -97,6 +100,7 @@ def _ensure_pinecone_index_host(dimension: int | None = None) -> str:
 def _get_pinecone_index(dimension: int | None = None):
     settings = get_settings()
     host = _ensure_pinecone_index_host(dimension)
+    host = host.strip().replace("https://", "").replace("http://", "").strip("/")
     from pinecone import Pinecone
 
     pc = Pinecone(api_key=settings.PINECONE_API_KEY)
