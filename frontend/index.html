@@ -49,9 +49,16 @@
           const params = new URLSearchParams(location.search);
           const fromParam = params.get('api');
           const fromStore = localStorage.getItem('apiBase');
-          const initial = fromParam || fromStore || (['localhost','127.0.0.1'].includes(location.hostname) ? 'http://127.0.0.1:8025' : '');
+          const defaultBase = (['localhost','127.0.0.1'].includes(location.hostname)
+            ? 'http://127.0.0.1:8025'
+            : 'https://mini-rag-backend.onrender.com');
+          const initial = fromParam || fromStore || defaultBase;
           setApiBase(initial);
-          if (fromParam) localStorage.setItem('apiBase', fromParam);
+          if (fromParam) {
+            localStorage.setItem('apiBase', fromParam);
+          } else if (!fromStore) {
+            localStorage.setItem('apiBase', initial);
+          }
         }, []);
 
         function updateApiBase(v){
@@ -108,7 +115,7 @@
               React.createElement('div', { className: 'small' }, 'API Base URL'),
               React.createElement('div', { className: 'row' },
                 React.createElement('input', {
-                  placeholder: 'http://127.0.0.1:8025', value: apiBase, onChange: e => updateApiBase(e.target.value)
+                  placeholder: 'https://mini-rag-backend.onrender.com', value: apiBase, onChange: e => updateApiBase(e.target.value)
                 }),
                 React.createElement('button', { onClick: async () => {
                   if (!apiBase) return alert('Set API base first');
