@@ -1,0 +1,175 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mini RAG</title>
+    <style>
+      :root { font-family: Inter, system-ui, Arial, sans-serif; }
+      body { margin: 0; padding: 24px; background: #0b0f19; color: #e6eefb; }
+      .container { max-width: 980px; margin: 0 auto; }
+      h1 { margin: 0 0 16px; font-size: 24px; }
+      .card { background: #121a2b; border: 1px solid #24314d; border-radius: 10px; padding: 16px; margin-bottom: 16px; }
+      textarea, input, button, select { background: #0e1524; color: #e6eefb; border: 1px solid #2b3b5f; border-radius: 8px; padding: 10px; }
+      textarea, input { width: 100%; }
+      textarea { min-height: 160px; resize: vertical; }
+      button { cursor: pointer; padding: 10px 14px; }
+      .row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+      .row > * { flex: 1 1 auto; }
+      .small { font-size: 12px; color: #94a7c6; }
+      .answer { white-space: pre-wrap; }
+      .citations { margin-top: 10px; }
+      .chip { display: inline-block; padding: 6px 10px; border-radius: 999px; background: #0a1324; border: 1px solid #223153; margin: 4px 6px 0 0; font-size: 12px; }
+      code { background: #0b1324; padding: 2px 6px; border-radius: 6px; }
+      a { color: #9ec1ff; }
+    </style>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Mini RAG</h1>
+      <div id="root"></div>
+    </div>
+    <script>
+      const { useState, useEffect } = React;
+
+      function App() {
+        const [text, setText] = useState("");
+        const [chunkSize, setChunkSize] = useState(800);
+        const [chunkOverlap, setChunkOverlap] = useState(200);
+        const [query, setQuery] = useState("");
+        const [topK, setTopK] = useState(6);
+        const [loading, setLoading] = useState(false);
+        const [answer, setAnswer] = useState("");
+        const [citations, setCitations] = useState([]);
+        const [apiBase, setApiBase] = useState('');
+
+        useEffect(() => {
+          const params = new URLSearchParams(location.search);
+          const fromParam = params.get('api');
+          const fromStore = localStorage.getItem('apiBase');
+          const initial = fromParam || fromStore || (['localhost','127.0.0.1'].includes(location.hostname) ? 'http://127.0.0.1:8025' : '');
+          setApiBase(initial);
+          if (fromParam) localStorage.setItem('apiBase', fromParam);
+        }, []);
+
+        function updateApiBase(v){
+          setApiBase(v);
+          localStorage.setItem('apiBase', v);
+        }
+
+        async function handleProcess() {
+          setLoading(true);
+          setAnswer("");
+          setCitations([]);
+          try {
+            if (!apiBase) throw new Error('API base URL not set');
+            const res = await fetch(`${apiBase}/process-text`, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ text, chunk_size: Number(chunkSize), chunk_overlap: Number(chunkOverlap) })
+            });
+            const data = await res.json();
+            if (!res.ok) throw new Error(data.detail || 'Failed to process');
+            alert(`Indexed ${data.chunks_indexed} chunks`);
+          } catch (e) {
+            alert(e.message || 'Error');
+          } finally {
+            setLoading(false);
+          }
+        }
+
+        async function handleAsk() {
+          setLoading(true);
+          setAnswer("");
+          setCitations([]);
+          try {
+            if (!apiBase) throw new Error('API base URL not set');
+            const res = await fetch(`${apiBase}/query`, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ query, top_k: Number(topK) })
+            });
+            const data = await res.json();
+            if (!res.ok) throw new Error(data.detail || 'Failed to query');
+            setAnswer(data.answer || '');
+            setCitations(data.citations || []);
+          } catch (e) {
+            alert(e.message || 'Error');
+          } finally {
+            setLoading(false);
+          }
+        }
+
+        return (
+          React.createElement('div', null,
+            React.createElement('div', { className: 'card' },
+              React.createElement('div', { className: 'small' }, 'API Base URL'),
+              React.createElement('div', { className: 'row' },
+                React.createElement('input', {
+                  placeholder: 'http://127.0.0.1:8025', value: apiBase, onChange: e => updateApiBase(e.target.value)
+                }),
+                React.createElement('button', { onClick: async () => {
+                  if (!apiBase) return alert('Set API base first');
+                  try {
+                    const r = await fetch(`${apiBase}/health`);
+                    const t = await r.text();
+                    alert(`Health ${r.status}: ${t}`);
+                  } catch (e) {
+                    alert(e.message || 'Health check failed');
+                  }
+                } }, 'Test Health')
+              ),
+              React.createElement('div', { className: 'small' }, 'Tip: If you changed the uvicorn port, set it here or pass ?api=http://127.0.0.1:8025 in the URL.')
+            ),
+            React.createElement('div', { className: 'card' },
+              React.createElement('div', { className: 'small' }, 'Step 1: Paste your source text'),
+              React.createElement('textarea', {
+                placeholder: 'Paste text to index...', value: text, onChange: e => setText(e.target.value)
+              }),
+              React.createElement('div', { className: 'row', style: { marginTop: 8 } },
+                React.createElement('div', { style: { minWidth: 120 } },
+                  React.createElement('label', { className: 'small' }, 'Chunk size'),
+                  React.createElement('input', { type: 'number', value: chunkSize, onChange: e => setChunkSize(e.target.value) })
+                ),
+                React.createElement('div', { style: { minWidth: 120 } },
+                  React.createElement('label', { className: 'small' }, 'Overlap'),
+                  React.createElement('input', { type: 'number', value: chunkOverlap, onChange: e => setChunkOverlap(e.target.value) })
+                ),
+                React.createElement('div', null,
+                  React.createElement('button', { onClick: handleProcess, disabled: loading || !text.trim() }, loading ? 'Processing...' : 'Process Text')
+                )
+              )
+            ),
+            React.createElement('div', { className: 'card' },
+              React.createElement('div', { className: 'small' }, 'Step 2: Ask a question'),
+              React.createElement('input', { placeholder: 'Ask about the text...', value: query, onChange: e => setQuery(e.target.value) }),
+              React.createElement('div', { className: 'row', style: { marginTop: 8 } },
+                React.createElement('div', { style: { minWidth: 120 } },
+                  React.createElement('label', { className: 'small' }, 'Top K'),
+                  React.createElement('input', { type: 'number', value: topK, onChange: e => setTopK(e.target.value) })
+                ),
+                React.createElement('div', null,
+                  React.createElement('button', { onClick: handleAsk, disabled: loading || !query.trim() }, loading ? 'Searching...' : 'Ask')
+                )
+              ),
+              React.createElement('div', { style: { marginTop: 12 } },
+                React.createElement('div', { className: 'small' }, 'Answer'),
+                React.createElement('div', { className: 'answer' }, answer || '—')
+              ),
+              React.createElement('div', { className: 'citations' },
+                React.createElement('div', { className: 'small' }, 'Citations'),
+                (citations && citations.length) ? citations.map((c, i) => (
+                  React.createElement('div', { key: i, className: 'chip' }, `#${c.chunk_id}${c.score != null ? ` (score: ${c.score.toFixed ? c.score.toFixed(3) : c.score})` : ''}`)
+                )) : React.createElement('div', { className: 'small' }, '—')
+              )
+            )
+          )
+        );
+      }
+
+      ReactDOM.createRoot(document.getElementById('root')).render(React.createElement(App));
+    </script>
+  </body>
+  </html>

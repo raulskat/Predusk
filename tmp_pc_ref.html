@@ -1,0 +1,371 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Pinecone Python SDK &#8212; Pinecone Python SDK  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=541cf223" />
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="canonical" href="https://sdk.pinecone.io/python/index.html" />
+    <link rel="icon" href="_static/favicon-32x32.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Pinecone" href="rest.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="#">
+    <img class="logo" src="_static/pinecone-logo.svg" alt="Logo" />
+    
+  </a>
+</p>
+
+
+
+<p class="blurb">Pinecone Python SDK</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=pinecone-io&repo=pinecone-python-client&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="rest.html">Pinecone</a></li>
+<li class="toctree-l1"><a class="reference internal" href="asyncio.html">PineconeAsyncio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="grpc.html">PineconeGRPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="admin.html">Admin API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Usage Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="upgrading.html">Upgrading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="working-with-indexes.html">Indexes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="db_data/index-usage-byov.html">Vectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="db_control/collections.html">Collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inference/inference-api.html">Inference API</a></li>
+</ul>
+
+
+<hr />
+<ul>
+    
+    <li class="toctree-l1"><a href="https://github.com/pinecone-io/pinecone-python-client">Github Source</a></li>
+    
+    <li class="toctree-l1"><a href="https://pinecone.io">Pinecone Home</a></li>
+    
+    <li class="toctree-l1"><a href="https://docs.pinecone.io">Pinecone Docs</a></li>
+    
+    <li class="toctree-l1"><a href="https://app.pinecone.io">Pinecone Console</a></li>
+    
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+      <li>Next: <a href="rest.html" title="next chapter">Pinecone</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<section id="pinecone-python-sdk">
+<h1>Pinecone Python SDK<a class="headerlink" href="#pinecone-python-sdk" title="Link to this heading">??</a></h1>
+<a class="reference internal image-reference" href="https://img.shields.io/github/license/pinecone-io/pinecone-python-client?color=orange"><img alt="License" src="https://img.shields.io/github/license/pinecone-io/pinecone-python-client?color=orange" style="width: 100px;" />
+</a>
+<p>The official Pinecone Python SDK.</p>
+<section id="documentation">
+<h2>Documentation<a class="headerlink" href="#documentation" title="Link to this heading">??</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.pinecone.io">Conceptual docs and guides</a></p></li>
+<li><p><a class="reference external" href="https://github.com/pinecone-io/pinecone-python-client">Github Source</a></p></li>
+</ul>
+</section>
+<section id="points-of-interest">
+<h2>Points of interest<a class="headerlink" href="#points-of-interest" title="Link to this heading">??</a></h2>
+<section id="db-control-plane">
+<h3>DB control plane<a class="headerlink" href="#db-control-plane" title="Link to this heading">??</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="./rest.html#pinecone.Pinecone">Pinecone</a></p></li>
+<li><p><a class="reference external" href="./asyncio.html#pinecone.PineconeAsyncio">PineconeAsyncio</a></p></li>
+<li><p><a class="reference external" href="./grpc.html#pinecone.PineconeGRPC">PineconeGRPC</a></p></li>
+</ul>
+</section>
+<section id="db-data-operations">
+<h3>DB data operations<a class="headerlink" href="#db-data-operations" title="Link to this heading">??</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="./rest.html#db-data-plane">Index</a></p></li>
+<li><p><a class="reference external" href="./asyncio.html#db-data-plane">IndexAsyncio</a></p></li>
+<li><p><a class="reference external" href="./grpc.html#db-data-plane">GRPCIndex</a></p></li>
+</ul>
+</section>
+<section id="inference-api">
+<h3>Inference API<a class="headerlink" href="#inference-api" title="Link to this heading">??</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="./rest.html#inference">Inference</a></p></li>
+<li><p><a class="reference external" href="./asyncio.html#inference">InferenceAsyncio</a></p></li>
+</ul>
+</section>
+</section>
+<section id="upgrading-the-sdk">
+<h2>Upgrading the SDK<a class="headerlink" href="#upgrading-the-sdk" title="Link to this heading">??</a></h2>
+<div class="admonition-note admonition">
+<p class="admonition-title">Note</p>
+<p>The official SDK package was renamed from <code class="docutils literal notranslate"><span class="pre">pinecone-client</span></code> to <code class="docutils literal notranslate"><span class="pre">pinecone</span></code> beginning in version <code class="docutils literal notranslate"><span class="pre">5.1.0</span></code>.
+Please remove <code class="docutils literal notranslate"><span class="pre">pinecone-client</span></code> from your project dependencies and add <code class="docutils literal notranslate"><span class="pre">pinecone</span></code> instead to get
+the latest updates.</p>
+</div>
+<p>For notes on changes between major versions, see [Upgrading](./docs/upgrading.md)</p>
+</section>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">??</a></h2>
+<ul class="simple">
+<li><p>The Pinecone Python SDK is compatible with Python 3.9 and greater. It has been tested with CPython versions from 3.9 to 3.13.</p></li>
+<li><p>Before you can use the Pinecone SDK, you must sign up for an account and find your API key in the Pinecone console dashboard at <a class="reference external" href="https://app.pinecone.io">https://app.pinecone.io</a>.</p></li>
+</ul>
+</section>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading">??</a></h2>
+<p>The Pinecone Python SDK is distributed on PyPI using the package name <cite>pinecone</cite>. By default the <cite>pinecone</cite> has a minimal set of dependencies, but you can install some extras to unlock additional functionality.</p>
+<p>Available extras:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pinecone[asyncio]</span></code> will add a dependency on <code class="docutils literal notranslate"><span class="pre">aiohttp</span></code> and enable usage of <code class="docutils literal notranslate"><span class="pre">PineconeAsyncio</span></code>, the asyncio-enabled version of the client for use with highly asynchronous modern web frameworks such as FastAPI.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pinecone[grpc]</span></code> will add dependencies on <code class="docutils literal notranslate"><span class="pre">grpcio</span></code> and related libraries needed to make pinecone data calls such as <code class="docutils literal notranslate"><span class="pre">upsert</span></code> and <code class="docutils literal notranslate"><span class="pre">query</span></code> over <a class="reference external" href="https://grpc.io/">GRPC</a> for a modest performance improvement. See the guide on <a class="reference external" href="https://docs.pinecone.io/docs/performance-tuning">tuning performance</a>.</p></li>
+</ul>
+<section id="installing-with-pip">
+<h3>Installing with pip<a class="headerlink" href="#installing-with-pip" title="Link to this heading">??</a></h3>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install the latest version</span>
+pip3<span class="w"> </span>install<span class="w"> </span>pinecone
+
+<span class="c1"># Install the latest version, with optional dependencies</span>
+pip3<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;pinecone[asyncio,grpc]&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="installing-with-uv">
+<h3>Installing with uv<a class="headerlink" href="#installing-with-uv" title="Link to this heading">??</a></h3>
+<p><a class="reference external" href="https://docs.astral.sh/uv/">uv</a> is a modern package manager that runs 10-100x faster than pip and supports most pip syntax.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install the latest version</span>
+uv<span class="w"> </span>install<span class="w"> </span>pinecone
+
+<span class="c1"># Install the latest version, optional dependencies</span>
+uv<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;pinecone[asyncio,grpc]&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="installing-with-poetry">
+<h3>Installing with <a class="reference external" href="https://python-poetry.org/">poetry</a><a class="headerlink" href="#installing-with-poetry" title="Link to this heading">??</a></h3>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install the latest version</span>
+poetry<span class="w"> </span>add<span class="w"> </span>pinecone
+
+<span class="c1"># Install the latest version, with optional dependencies</span>
+poetry<span class="w"> </span>add<span class="w"> </span>pinecone<span class="w"> </span>--extras<span class="w"> </span>asyncio<span class="w"> </span>--extras<span class="w"> </span>grpc
+</pre></div>
+</div>
+</section>
+</section>
+<section id="quickstart">
+<h2>Quickstart<a class="headerlink" href="#quickstart" title="Link to this heading">??</a></h2>
+<section id="bringing-your-own-vectors-to-pinecone">
+<h3>Bringing your own vectors to Pinecone<a class="headerlink" href="#bringing-your-own-vectors-to-pinecone" title="Link to this heading">??</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pinecone</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+   <span class="n">Pinecone</span><span class="p">,</span>
+   <span class="n">ServerlessSpec</span><span class="p">,</span>
+   <span class="n">CloudProvider</span><span class="p">,</span>
+   <span class="n">AwsRegion</span><span class="p">,</span>
+   <span class="n">VectorType</span>
+<span class="p">)</span>
+
+<span class="c1"># 1. Instantiate the Pinecone client</span>
+<span class="n">pc</span> <span class="o">=</span> <span class="n">Pinecone</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s1">&#39;YOUR_API_KEY&#39;</span><span class="p">)</span>
+
+<span class="c1"># 2. Create an index</span>
+<span class="n">index_config</span> <span class="o">=</span> <span class="n">pc</span><span class="o">.</span><span class="n">create_index</span><span class="p">(</span>
+   <span class="n">name</span><span class="o">=</span><span class="s2">&quot;index-name&quot;</span><span class="p">,</span>
+   <span class="n">dimension</span><span class="o">=</span><span class="mi">1536</span><span class="p">,</span>
+   <span class="n">spec</span><span class="o">=</span><span class="n">ServerlessSpec</span><span class="p">(</span>
+      <span class="n">cloud</span><span class="o">=</span><span class="n">CloudProvider</span><span class="o">.</span><span class="n">AWS</span><span class="p">,</span>
+      <span class="n">region</span><span class="o">=</span><span class="n">AwsRegion</span><span class="o">.</span><span class="n">US_EAST_1</span>
+   <span class="p">),</span>
+   <span class="n">vector_type</span><span class="o">=</span><span class="n">VectorType</span><span class="o">.</span><span class="n">DENSE</span>
+<span class="p">)</span>
+
+<span class="c1"># 3. Instantiate an Index client</span>
+<span class="n">idx</span> <span class="o">=</span> <span class="n">pc</span><span class="o">.</span><span class="n">Index</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="n">index_config</span><span class="o">.</span><span class="n">host</span><span class="p">)</span>
+
+<span class="c1"># 4. Upsert embeddings</span>
+<span class="n">idx</span><span class="o">.</span><span class="n">upsert</span><span class="p">(</span>
+   <span class="n">vectors</span><span class="o">=</span><span class="p">[</span>
+      <span class="p">(</span><span class="s2">&quot;id1&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="p">{</span><span class="s2">&quot;metadata_key&quot;</span><span class="p">:</span> <span class="s2">&quot;value1&quot;</span><span class="p">}),</span>
+      <span class="p">(</span><span class="s2">&quot;id2&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="p">{</span><span class="s2">&quot;metadata_key&quot;</span><span class="p">:</span> <span class="s2">&quot;value2&quot;</span><span class="p">}),</span>
+   <span class="p">],</span>
+   <span class="n">namespace</span><span class="o">=</span><span class="s2">&quot;example-namespace&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># 5. Query your index using an embedding</span>
+<span class="n">query_embedding</span> <span class="o">=</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span> <span class="c1"># list should have length == index dimension</span>
+<span class="n">idx</span><span class="o">.</span><span class="n">query</span><span class="p">(</span>
+   <span class="n">vector</span><span class="o">=</span><span class="n">query_embedding</span><span class="p">,</span>
+   <span class="n">top_k</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+   <span class="n">include_metadata</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+   <span class="nb">filter</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;metadata_key&quot;</span><span class="p">:</span> <span class="p">{</span> <span class="s2">&quot;$eq&quot;</span><span class="p">:</span> <span class="s2">&quot;value1&quot;</span> <span class="p">}}</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="bring-your-own-data-using-pinecone-integrated-inference">
+<h3>Bring your own data using Pinecone integrated inference<a class="headerlink" href="#bring-your-own-data-using-pinecone-integrated-inference" title="Link to this heading">??</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pinecone</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+   <span class="n">Pinecone</span><span class="p">,</span>
+   <span class="n">CloudProvider</span><span class="p">,</span>
+   <span class="n">AwsRegion</span><span class="p">,</span>
+   <span class="n">EmbedModel</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># 1. Instantiate the Pinecone client</span>
+<span class="n">pc</span> <span class="o">=</span> <span class="n">Pinecone</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s2">&quot;&lt;&lt;PINECONE_API_KEY&gt;&gt;&quot;</span><span class="p">)</span>
+
+<span class="c1"># 2. Create an index configured for use with a particular model</span>
+<span class="n">index_config</span> <span class="o">=</span> <span class="n">pc</span><span class="o">.</span><span class="n">create_index_for_model</span><span class="p">(</span>
+   <span class="n">name</span><span class="o">=</span><span class="s2">&quot;my-model-index&quot;</span><span class="p">,</span>
+   <span class="n">cloud</span><span class="o">=</span><span class="n">CloudProvider</span><span class="o">.</span><span class="n">AWS</span><span class="p">,</span>
+   <span class="n">region</span><span class="o">=</span><span class="n">AwsRegion</span><span class="o">.</span><span class="n">US_EAST_1</span><span class="p">,</span>
+   <span class="n">embed</span><span class="o">=</span><span class="n">IndexEmbed</span><span class="p">(</span>
+      <span class="n">model</span><span class="o">=</span><span class="n">EmbedModel</span><span class="o">.</span><span class="n">Multilingual_E5_Large</span><span class="p">,</span>
+      <span class="n">field_map</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;my_text_field&quot;</span><span class="p">}</span>
+   <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="c1"># 3. Instantiate an Index client</span>
+<span class="n">idx</span> <span class="o">=</span> <span class="n">pc</span><span class="o">.</span><span class="n">Index</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="n">index_config</span><span class="o">.</span><span class="n">host</span><span class="p">)</span>
+
+<span class="c1"># 4. Upsert records</span>
+<span class="n">idx</span><span class="o">.</span><span class="n">upsert_records</span><span class="p">(</span>
+   <span class="n">namespace</span><span class="o">=</span><span class="s2">&quot;my-namespace&quot;</span><span class="p">,</span>
+   <span class="n">records</span><span class="o">=</span><span class="p">[</span>
+      <span class="p">{</span>
+            <span class="s2">&quot;_id&quot;</span><span class="p">:</span> <span class="s2">&quot;test1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;my_text_field&quot;</span><span class="p">:</span> <span class="s2">&quot;Apple is a popular fruit known for its sweetness and crisp texture.&quot;</span><span class="p">,</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+            <span class="s2">&quot;_id&quot;</span><span class="p">:</span> <span class="s2">&quot;test2&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;my_text_field&quot;</span><span class="p">:</span> <span class="s2">&quot;The tech company Apple is known for its innovative products like the iPhone.&quot;</span><span class="p">,</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+            <span class="s2">&quot;_id&quot;</span><span class="p">:</span> <span class="s2">&quot;test3&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;my_text_field&quot;</span><span class="p">:</span> <span class="s2">&quot;Many people enjoy eating apples as a healthy snack.&quot;</span><span class="p">,</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+            <span class="s2">&quot;_id&quot;</span><span class="p">:</span> <span class="s2">&quot;test4&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;my_text_field&quot;</span><span class="p">:</span> <span class="s2">&quot;Apple Inc. has revolutionized the tech industry with its sleek designs and user-friendly interfaces.&quot;</span><span class="p">,</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+            <span class="s2">&quot;_id&quot;</span><span class="p">:</span> <span class="s2">&quot;test5&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;my_text_field&quot;</span><span class="p">:</span> <span class="s2">&quot;An apple a day keeps the doctor away, as the saying goes.&quot;</span><span class="p">,</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+            <span class="s2">&quot;_id&quot;</span><span class="p">:</span> <span class="s2">&quot;test6&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;my_text_field&quot;</span><span class="p">:</span> <span class="s2">&quot;Apple Computer Company was founded on April 1, 1976, by Steve Jobs, Steve Wozniak, and Ronald Wayne as a partnership.&quot;</span><span class="p">,</span>
+      <span class="p">},</span>
+   <span class="p">],</span>
+<span class="p">)</span>
+
+<span class="c1"># 5. Search for similar records</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pinecone</span><span class="w"> </span><span class="kn">import</span> <span class="n">SearchQuery</span><span class="p">,</span> <span class="n">SearchRerank</span><span class="p">,</span> <span class="n">RerankModel</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">index</span><span class="o">.</span><span class="n">search_records</span><span class="p">(</span>
+   <span class="n">namespace</span><span class="o">=</span><span class="s2">&quot;my-namespace&quot;</span><span class="p">,</span>
+   <span class="n">query</span><span class="o">=</span><span class="n">SearchQuery</span><span class="p">(</span>
+      <span class="n">inputs</span><span class="o">=</span><span class="p">{</span>
+            <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;Apple corporation&quot;</span><span class="p">,</span>
+      <span class="p">},</span>
+      <span class="n">top_k</span><span class="o">=</span><span class="mi">3</span>
+   <span class="p">),</span>
+   <span class="n">rerank</span><span class="o">=</span><span class="n">SearchRerank</span><span class="p">(</span>
+      <span class="n">model</span><span class="o">=</span><span class="n">RerankModel</span><span class="o">.</span><span class="n">Bge_Reranker_V2_M3</span><span class="p">,</span>
+      <span class="n">rank_fields</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;my_text_field&quot;</span><span class="p">],</span>
+      <span class="n">top_n</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+   <span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="issues-bugs">
+<h2>Issues &amp; Bugs<a class="headerlink" href="#issues-bugs" title="Link to this heading">??</a></h2>
+<p>If you notice bugs or have feedback, please <a class="reference external" href="https://github.com/pinecone-io/pinecone-python-client/issues">file an issue</a>.</p>
+<p>You can also get help in the <a class="reference external" href="https://community.pinecone.io/">Pinecone Community Forum</a>.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &#169;2025, Pinecone Systems, Inc..
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

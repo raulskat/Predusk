@@ -1,0 +1,32 @@
+services:
+  - type: web
+    name: mini-rag-backend
+    runtime: python
+    plan: free
+    region: oregon
+    autoDeploy: true
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn backend.app:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: PINECONE_API_KEY
+        sync: false
+      - key: PINECONE_INDEX_HOST
+        sync: false
+      - key: PINECONE_INDEX
+        sync: false
+      - key: PINECONE_CLOUD
+        value: AWS
+      - key: PINECONE_REGION
+        value: US_EAST_1
+      - key: PINECONE_NAMESPACE
+        value: default
+      - key: GOOGLE_API_KEY
+        sync: false
+      - key: COHERE_API_KEY
+        sync: false
+      - key: ALLOWED_ORIGINS
+        value: "*"
+    healthCheckPath: /health
+
